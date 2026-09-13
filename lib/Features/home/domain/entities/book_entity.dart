@@ -1,6 +1,7 @@
 // data presentation
 
 class BookEntity {
+  final String bookId;
   final String image;
   final String title;
   final String authorName;
@@ -11,6 +12,6 @@ class BookEntity {
     required this.title,
     required this.authorName,
     required this.price,
-    required this.rating,
+    required this.rating, required this.bookId,
   });
 }

@@ -1,9 +1,23 @@
-class BookModel {
+import 'package:clean_arch/Features/home/domain/entities/book_entity.dart';
+
+class BookModel extends BookEntity {
+  final String id;
   final VolumeInfoModel volumeInfo;
-  BookModel({required this.volumeInfo});
+  BookModel({required this.volumeInfo, required this.id})
+    : super(
+        bookId: id,
+        authorName: volumeInfo.authors.isNotEmpty
+            ? volumeInfo.authors.first
+            : '',
+        image: volumeInfo.imageLinks?.smallThumbnail ?? '',
+        price: 0,
+        title: volumeInfo.title,
+        rating: volumeInfo.averageRating,
+      );
 
   factory BookModel.fromJson({required Map<String, dynamic> data}) {
     return BookModel(
+      id: data['id'] ?? '',
       volumeInfo: VolumeInfoModel.fromJson(
         data: Map<String, dynamic>.from(data['volumeInfo']),
       ),
@@ -20,7 +34,7 @@ class VolumeInfoModel {
   final String description;
   final int pageCount;
   final num averageRating;
-  final int ratingsCount;
+  final num ratingsCount;
   final ImageLinksModel? imageLinks;
   final String previewLink;
 
