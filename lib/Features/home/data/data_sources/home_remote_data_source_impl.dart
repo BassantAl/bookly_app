@@ -15,7 +15,7 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
       endPoint: 'volumes?key=$apiKey&q=programming&Filtering=free-ebooks',
     );
     List<BookEntity> books = getBooksList(data);
-    saveBooksData(books: books,boxsName: kFeatureBox);
+    saveBooksData(books: books, boxsName: kFeatureBox);
     return books;
   }
 
@@ -26,6 +26,7 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
           'volumes?key=$apiKey&q=programming&Filtering=free-ebooks&Sorting=newest',
     );
     List<BookEntity> books = getBooksList(data);
+    saveBooksData(books: books, boxsName: kNewestBox);
     return books;
   }
 
@@ -36,6 +37,4 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
     }
     return books;
   }
-
-
 }
