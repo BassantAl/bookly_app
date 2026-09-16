@@ -6,7 +6,7 @@ import 'package:hive_ce/hive_ce.dart';
 import 'package:clean_arch/Features/home/domain/entities/book_entity.dart';
 
 extension HiveRegistrar on HiveInterface {
-  void registerAdapters() {
+  void registerAdapters(BookEntityAdapter bookEntityAdapter) {
     registerAdapter(BookEntityAdapter());
   }
 }
