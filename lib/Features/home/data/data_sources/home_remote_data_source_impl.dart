@@ -1,6 +1,8 @@
 import 'package:clean_arch/Features/home/data/data_sources/home_remote_data_source.dart';
 import 'package:clean_arch/Features/home/data/models/book_model.dart';
 import 'package:clean_arch/Features/home/domain/entities/book_entity.dart';
+import 'package:clean_arch/constants.dart';
+import 'package:clean_arch/core/utils/methods/save_books.dart';
 import 'package:clean_arch/core/utils/services/api_services.dart';
 import 'package:clean_arch/keys.dart';
 
@@ -13,6 +15,7 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
       endPoint: 'volumes?key=$apiKey&q=programming&Filtering=free-ebooks',
     );
     List<BookEntity> books = getBooksList(data);
+    saveBooksData(books: books,boxsName: kFeatureBox);
     return books;
   }
 
@@ -33,4 +36,6 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
     }
     return books;
   }
+
+
 }
