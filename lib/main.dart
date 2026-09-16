@@ -2,10 +2,12 @@ import 'package:clean_arch/constants.dart';
 import 'package:clean_arch/core/utils/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive_ce_flutter/adapters.dart';
 
 
 void main() {
   runApp(const Bookly());
+  
 }
 
 class Bookly extends StatelessWidget {
