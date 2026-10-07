@@ -1,18 +1,22 @@
+import 'package:bloc/bloc.dart';
 import 'package:clean_arch/Features/home/domain/entities/book_entity.dart';
 import 'package:clean_arch/constants.dart';
+import 'package:clean_arch/core/di/services_locator.dart';
 import 'package:clean_arch/core/utils/app_router.dart';
+import 'package:clean_arch/core/utils/simple_bloc_observer.dart';
 import 'package:clean_arch/hive_registrar.g.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_ce_flutter/adapters.dart';
 
-void main()async {
-   await Hive.initFlutter();
+void main() async {
+  await Hive.initFlutter();
   Hive.registerAdapters(BookEntityAdapter());
+  setUp();
   await Hive.openBox<BookEntity>(kFeatureBox);
   await Hive.openBox<BookEntity>(kNewestBox);
+  Bloc.observer = SimpleBlocObserver();
   runApp(const Bookly());
- 
 }
 
 class Bookly extends StatelessWidget {
