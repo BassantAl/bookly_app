@@ -10,9 +10,9 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
   final ApiServices apiServices;
   HomeRemoteDataSourceImpl({required this.apiServices});
   @override
-  Future<List<BookEntity>> fetchFeaturedBooks() async {
+  Future<List<BookEntity>> fetchFeaturedBooks({int pageNumber=0}) async {
     var data = await apiServices.get(
-      endPoint: 'volumes?key=$apiKey&q=programming&Filtering=free-ebooks',
+      endPoint: 'volumes?key=$apiKey&q=programming&Filtering=free-ebooks&startIndex=${pageNumber*10}',
     );
     List<BookEntity> books = getBooksList(data);
     saveBooksData(books: books, boxsName: kFeatureBox);
