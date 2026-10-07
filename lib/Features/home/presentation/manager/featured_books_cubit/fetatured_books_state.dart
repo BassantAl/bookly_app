@@ -1,18 +1,18 @@
 part of 'fetatured_books_cubit.dart';
 
 @immutable
-sealed class FetaturedBooksState {}
+sealed class FeaturedBooksState {}
 
-final class FetaturedBooksInitial extends FetaturedBooksState {}
+final class FeaturedBooksInitial extends FeaturedBooksState {}
 
-final class FetaturedBooksLoading extends FetaturedBooksState {}
+final class FeaturedBooksLoading extends FeaturedBooksState {}
 
-final class FetaturedBooksFailure extends FetaturedBooksState {
+final class FeaturedBooksFailure extends FeaturedBooksState {
   final String errorMessage;
-  FetaturedBooksFailure({required this.errorMessage});
+  FeaturedBooksFailure({required this.errorMessage});
 }
 
-final class FetaturedBooksSuccess extends FetaturedBooksState {
+final class FeaturedBooksSuccess extends FeaturedBooksState {
   final List<BookEntity> books;
-  FetaturedBooksSuccess({required this.books});
+  FeaturedBooksSuccess({required this.books});
 }

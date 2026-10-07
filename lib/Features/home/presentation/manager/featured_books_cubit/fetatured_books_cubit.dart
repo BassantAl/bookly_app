@@ -5,20 +5,20 @@ import 'package:meta/meta.dart';
 
 part 'fetatured_books_state.dart';
 
-class FetaturedBooksCubit extends Cubit<FetaturedBooksState> {
-  FetaturedBooksCubit({required this.fetchFeaturedBooksUseCase})
-    : super(FetaturedBooksInitial());
+class FeaturedBooksCubit extends Cubit<FeaturedBooksState> {
+  FeaturedBooksCubit({required this.fetchFeaturedBooksUseCase})
+    : super(FeaturedBooksInitial());
   final FetchFeaturedBooksUseCase fetchFeaturedBooksUseCase;
   Future<void> fetchFeaturdBooks() async {
-    emit(FetaturedBooksLoading());
+    emit(FeaturedBooksLoading());
     var result = await fetchFeaturedBooksUseCase.call();
 
     result.fold(
       (failure) {
-        emit(FetaturedBooksFailure(errorMessage: failure.errorMessage));
+        emit(FeaturedBooksFailure(errorMessage: failure.errorMessage));
       },
       (books) {
-        emit(FetaturedBooksSuccess(books: books));
+        emit(FeaturedBooksSuccess(books: books));
       },
     );
   }

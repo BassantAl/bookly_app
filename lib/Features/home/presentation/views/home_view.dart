@@ -1,4 +1,5 @@
 import 'package:clean_arch/Features/home/data/repos/home_repo_impl.dart';
+import 'package:clean_arch/Features/home/domain/repos/home_repo.dart';
 import 'package:clean_arch/Features/home/domain/use_cases/fetch_featured_books_use_case.dart';
 import 'package:clean_arch/Features/home/domain/use_cases/fetch_newest_books_use_case.dart';
 import 'package:clean_arch/Features/home/presentation/manager/featured_books_cubit/fetatured_books_cubit.dart';
@@ -17,16 +18,16 @@ class HomeView extends StatelessWidget {
       body: MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (context) => FetaturedBooksCubit(
+            create: (context) => FeaturedBooksCubit(
               fetchFeaturedBooksUseCase: FetchFeaturedBooksUseCase(
-                homeRepo: gitIt.get<HomeRepoImpl>(),
+                homeRepo: gitIt.get<HomeRepo>(),
               ),
-            ),
+            )..fetchFeaturdBooks(),
           ),
           BlocProvider(
             create: (context) => NewestBooksCubit(
               fetchNewestBooksUseCase: FetchNewestBooksUseCase(
-                homeRepo: gitIt.get<HomeRepoImpl>(),
+                homeRepo: gitIt.get<HomeRepo>(),
               ),
             ),
           ),
